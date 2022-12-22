@@ -20,8 +20,8 @@ jobs:
       - name: Build image
         run: docker build -t registry.digitalocean.com/victor-registry-container/digital-ocean-kubernetes:$(echo $GITHUB_SHA | head -c7) .
 
-      - name: Install doctl
-        run: digitalocean/action-doctl@v2
+      - name: Instal doctl
+        uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_TOKEN }}
 
