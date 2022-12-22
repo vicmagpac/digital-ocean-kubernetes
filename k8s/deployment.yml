@@ -11,10 +11,6 @@ spec:
   selector:
     matchLabels:
       app: digital-ocean-kubernetes
-  strategy: 
-    roolingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
   minReadySeconds: 5
   template: 
     metadata:
@@ -25,7 +21,7 @@ spec:
       - name: digital-ocean-kubernetes
         image: <IMAGE>
         securityContext:
-          priviliged: true
+          privileged: true
         ports:
         - name: http
           containerPort: 80
