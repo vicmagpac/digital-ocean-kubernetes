@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: digital-ocean-kubernetes
+  labels:
+    app: digital-ocean-kubernetes
+  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: digital-ocean-kubernetes
+  strategy: 
+    roolingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    minReadySeconds: 5
+    template: 
+      metadata:
+        labels:
+          app: digital-ocean-kubernetes
+      spec: 
+        containers: 
+        - name: digital-ocean-kubernetes
+          image: <IMAGE>
+          securityContext:
+            priviliged: true
+          ports:
+          - name: http
+            containerPort: 80
+            hostPort: 80
+          resources:
+            requests:
+              cpu: 100m
+            limit:
+              cpu: 100m
+
+
+  
