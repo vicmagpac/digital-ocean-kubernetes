@@ -22,11 +22,11 @@ jobs:
 
       - name: Install doctl
         run: digitalocean/action-doctl@v2
-        with: 
-          token: ${{ secrets.DIGITAL_OCEAN_REGISTRY_TOKEN }}
+        with:
+          token: ${{ secrets.DIGITALOCEAN_TOKEN }}
 
       - name: Login docker
         run: doctl registry login --expire-seconds 600
 
       - name: Push image
-        run: docker push
+        run: docker push registry.digitalocean.com/victor-registry-container/digital-ocean-kubernetes:$(echo $GITHUB_SHA | head -c7)
