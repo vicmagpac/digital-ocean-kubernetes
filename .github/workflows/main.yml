@@ -18,4 +18,4 @@ jobs:
         run: echo $GITHUB_SHA /$GITHUB_WORKSPACE/app/_meta  
 
       - name: Build image
-        run: docker build -t registry.digitalocean.com/victor-registry-container/digital-ocean-kubernetes:$(echo $GITHUB_SHA | head -c7) .
+        run: docker build -t registry.digitalocean.com/victor-registry-container/digital-ocean-kubernetes:$(echo $GITHUB_SHA | head -c7) ./..
