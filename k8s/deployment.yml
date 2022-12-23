@@ -5,19 +5,23 @@ metadata:
   name: digital-ocean-kubernetes
   labels:
     app: digital-ocean-kubernetes
-  
+
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: digital-ocean-kubernetes
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   minReadySeconds: 5
-  template: 
+  template:
     metadata:
       labels:
         app: digital-ocean-kubernetes
-    spec: 
-      containers: 
+    spec:
+      containers:
       - name: digital-ocean-kubernetes
         image: <IMAGE>
         securityContext:
@@ -29,8 +33,5 @@ spec:
         resources:
           requests:
             cpu: 100m
-          limit:
+          limits:
             cpu: 100m
-
-
-  
